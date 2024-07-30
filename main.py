@@ -17,24 +17,24 @@ while True:
     if hand:
         lmlist = hand[0]['lmList']
         dedos = detector.fingersUp(hand[0])
-        dedosLev = dedos.count(1)
+        dedosLevantados = dedos.count(1)
 
-        if dedosLev==1: #Ativa o modo desenho
+        if dedosLevantados==1: #Ativa o modo desenho
             x,y = lmlist[8][0],lmlist[8][1]
-            cv2.circle(img,(x,y),15,(0,0,255),cv2.FILLED)
+            cv2.circle(img,(x,y),15,(0,0,0),cv2.FILLED)
             desenho.append((x,y))
-        elif dedosLev !=1 and dedosLev !=3: #Pausa o desenho
+        elif dedosLevantados !=1 and dedosLevantados !=3: #Pausa o desenho
             desenho.append((0,0))
-        elif dedosLev==3: #Apaga todo o desenho
+        elif dedosLevantados==3: #Apaga todo o desenho
             desenho = []
 
         for id,ponto in enumerate(desenho):
             x,y = ponto[0],ponto[1]
-            cv2.circle(img, (x, y), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(img, (x, y), 10, (0, 0, 0), cv2.FILLED)
             if id >=1:
                 ax,ay = desenho[id-1][0],desenho[id-1][1]
                 if x!=0 and ax!=0:
-                    cv2.line(img,(x,y),(ax,ay),(0,0,255),20)
+                    cv2.line(img,(x,y),(ax,ay),(0,0,0),20)
 
     imgFlip = cv2.flip(img,1)
     cv2.imshow('Img',imgFlip)
