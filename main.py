@@ -31,7 +31,7 @@ while True:
         for id,ponto in enumerate(desenho):
             x,y = ponto[0],ponto[1]
             cv2.circle(img, (x, y), 10, (0, 0, 0), cv2.FILLED)
-            if id >=1:
+            if id >=1: #Gera a linha
                 ax,ay = desenho[id-1][0],desenho[id-1][1]
                 if x!=0 and ax!=0:
                     cv2.line(img,(x,y),(ax,ay),(0,0,0),20)
